@@ -159,8 +159,39 @@ VALUES
 ("PRO11","iPhone 11 64GB Morado","4","2600","30","A"),
 ("PRO12","Poco X3 GT 5G 256GB 8GB","4","1450","20","A");
 
-select*from vendedor ;
+select*from producto ;
 
 /*Elaborar una vista que permita listar los datos del cliente
  con los productos que ha comprado así como el total cancelado.*/
-SELECT * FROM vendedor WHERE celvend < 0 ORDER BY celvend;
+select
+CODCLI as id, 
+NOMCLI as Nombre,
+APECLI as Apellido,
+CODPRO as id_producto,
+DESCPRO as description,
+PREPRO as precio
+from CLIENTE 
+INNER JOIN PRODUCTO;
+
+/*Elaborar una vista que permita listar los datos de proveedores,
+ productos con la respectiva cantidad que se ha comprado.*/
+select 
+CODPROV,
+RAZSOCPROV,
+DESCPRO,
+PREPRO,
+STOCKPRO
+from
+PROVEEDOR 
+inner join PRODUCTO;
+
+/*Elaborar una vista que permita listar datos de los vendedores
+ con los respectivos montos totales de venta realizados.*/
+select 
+NOMVEND,
+APEVEND,
+EMAVEND,
+CODVEN
+from
+VENDEDOR 
+inner join VENTA;
